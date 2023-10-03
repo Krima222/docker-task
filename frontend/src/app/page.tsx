@@ -1,9 +1,13 @@
+import classes from './Page.module.css'
 
+export default async function Page() {
+    const res = await fetch('http://158.160.60.245/api/post');
 
-export function Page() {
+    const { data: { attributes } } = await res.json() as any
+
     return (
-        <div>
-            <span></span>
+        <div className={classes.page}>
+            <span>{attributes.description}</span>
         </div>
     )
 }
